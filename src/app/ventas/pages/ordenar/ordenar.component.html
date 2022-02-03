@@ -1,0 +1,101 @@
+<div class="text-layout">
+    <h1>Pipes personalizados</h1>
+    <p>pipes creados por {{nombre | mayusculas:enMayusculas}}</p>
+
+    <button (click)="cambiarMinusculasYMayusculas()">cambiar mayusculas/minusculas</button>
+</div>
+
+
+
+<p-toolbar>
+    <div class="p-toolbar-group-left">
+
+        
+        
+    </div>
+    
+    <div class="p-toolbar-group-right">
+
+       <button pButton
+               icon="pi pi-sort"
+               label="Por nombre"
+               class="mr-1"
+               (click)="cambiarParametroDeOrdenamiento('nombre')">
+        </button>
+
+        <button pButton
+            icon="pi pi-sort"
+            label="Vuela"
+            class="mr-1 p-button-success"
+            (click)="cambiarParametroDeOrdenamiento('vuela')">
+        </button>
+
+        <button pButton
+            icon="pi pi-sort"
+            label="Por color"
+            class="mr-1 p-button-help">
+        </button>
+
+    </div>
+</p-toolbar>
+
+
+    <div class="grid">
+        <div class="col-12 mt-2">
+
+            <p-table [value]='heroes | ordenar:parametroDeOrdenamiento' responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Vuela</th>
+                        <th>Color</th>
+                        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-heroe>
+                    <tr>
+                        <td>{{heroe.nombre}}</td>
+                        <td>{{heroe.vuela | vuela}}</td>
+                        <td>{{heroe.color | color }}</td>
+                        
+                    </tr>
+                </ng-template>
+            </p-table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <h1 class="text-layout">tabla ordenada con primeNg</h1>
+
+    <div class="grid">
+        <div class="col-12 mt-2">
+
+            <p-table [value]='heroes | ordenar:parametroDeOrdenamiento' responsiveLayout="scroll">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="nombre">Nombre<p-sortIcon field="nombre"></p-sortIcon></th>
+                        <th pSortableColumn="vuela">Vuela<p-sortIcon field="vuela"></p-sortIcon></th>
+                        <th>Color</th>
+                        
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-heroe>
+                    <tr>
+                        <td>{{heroe.nombre}}</td>
+                        <td>{{heroe.vuela | vuela}}</td>
+                        <td>{{heroe.color | color }}</td>
+                        
+                    </tr>
+                </ng-template>
+            </p-table>
+
+        </div>
+    </div>
